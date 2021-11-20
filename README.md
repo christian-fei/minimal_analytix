@@ -14,6 +14,8 @@ docker run -v $PWD/data:/var/lib/postgresql/data --rm --name postgres-db -p 5432
 
 Create and migrate your database with `mix ecto.setup`
 
+Run `event_store.setup` to initialize the eventstore.
+
 Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.

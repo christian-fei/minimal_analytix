@@ -45,7 +45,9 @@ defmodule MinimalAnalytix.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:commanded, "~> 1.3"},
+      {:eventstore, "~> 1.3"}
     ]
   end
 
@@ -62,7 +64,8 @@ defmodule MinimalAnalytix.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       # test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       test: ["ecto.reset", "ecto.migrate", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["esbuild default --minify", "phx.digest"],
+      "event_store.setup": ["event_store.drop", "event_store.create", "event_store.init"]
     ]
   end
 end
