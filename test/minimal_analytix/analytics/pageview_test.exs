@@ -7,7 +7,7 @@ defmodule MinimalAnalytix.Analytics.PageviewTest do
     path: "/about",
     domain: "cri.dev",
     visitor: "some-visitor-34543",
-    occurred_at: ~N(2021-11-20T19:45:00.000Z)
+    occurred_at: ~U(2021-11-20T19:45:00.000Z)
   }
   @invalid_attrs %{}
 
