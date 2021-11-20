@@ -13,7 +13,8 @@ defmodule MinimalAnalytixWeb.PageviewController do
       Pageview.create_pageview(%{
         domain: post_params["domain"],
         path: post_params["path"],
-        visitor: post_params["visitor"]
+        visitor: post_params["visitor"],
+        occurred_at: post_params["occurred_at"]
       })
 
     case changeset.valid? do

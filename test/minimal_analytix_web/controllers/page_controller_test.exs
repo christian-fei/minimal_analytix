@@ -15,13 +15,20 @@ defmodule MinimalAnalytixWeb.PageControllerTest do
   end
 
   test "POST /api/pageview responds with 201 when valid", %{conn: conn} do
-    conn = post(conn, "/api/pageview", %{domain: "cri.dev", path: "/about", visitor: "rtgt435gt"})
+    conn =
+      post(conn, "/api/pageview", %{
+        domain: "cri.dev",
+        path: "/about",
+        visitor: "rtgt435gt",
+        occurred_at: "2021-11-20T19:45:00.000Z"
+      })
 
     assert json_response(conn, 201) == %{
              "domain" => "cri.dev",
              "id" => 1,
              "path" => "/about",
-             "visitor" => "rtgt435gt"
+             "visitor" => "rtgt435gt",
+             "occurred_at" => "2021-11-20T19:45:00Z"
            }
   end
 end
