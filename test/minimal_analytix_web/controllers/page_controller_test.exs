@@ -1,5 +1,13 @@
 defmodule MinimalAnalytixWeb.PageControllerTest do
   use MinimalAnalytixWeb.ConnCase
+  use MinimalAnalytix.RepoCase
+
+  setup do
+    MinimalAnalytix.Repo.all(MinimalAnalytix.Analytics.Pageview)
+    |> Enum.map(&MinimalAnalytix.Repo.delete!(&1))
+
+    :ok
+  end
 
   test "GET / responds with 200 with dashboard", %{conn: conn} do
     conn = get(conn, "/")
@@ -9,6 +17,11 @@ defmodule MinimalAnalytixWeb.PageControllerTest do
   test "POST /api/pageview responds with 201 when valid", %{conn: conn} do
     conn = post(conn, "/api/pageview", %{domain: "cri.dev", path: "/about", visitor: "rtgt435gt"})
 
-    assert json_response(conn, 201) =~ "ok"
+    assert json_response(conn, 201) == %{
+             "domain" => "cri.dev",
+             "id" => 1,
+             "path" => "/about",
+             "visitor" => "rtgt435gt"
+           }
   end
 end

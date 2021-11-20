@@ -18,9 +18,11 @@ defmodule MinimalAnalytixWeb.PageviewController do
 
     case changeset.valid? do
       true ->
+        updated = MinimalAnalytix.Repo.insert!(changeset)
+
         conn
         |> put_status(:created)
-        |> json("ok")
+        |> json(updated)
 
       false ->
         conn
