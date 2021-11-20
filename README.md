@@ -4,6 +4,14 @@
 
 Install dependencies with `mix deps.get`
 
+Start postgres, e.g. with docker: 
+
+```sh
+docker run -v $PWD/data:/var/lib/postgresql/data --rm --name postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+```
+
+*The `-v $PWD/data:/var/lib/postgresql/data` flag will create a persistent `data` folder.*
+
 Create and migrate your database with `mix ecto.setup`
 
 Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
