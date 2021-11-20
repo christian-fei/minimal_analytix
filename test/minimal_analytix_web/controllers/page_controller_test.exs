@@ -6,8 +6,8 @@ defmodule MinimalAnalytixWeb.PageControllerTest do
     assert html_response(conn, 200) =~ "ok"
   end
 
-  test "POST /pageview responds with 201 when valid", %{conn: conn} do
-    conn = post(conn, "/pageview")
+  test "POST /api/pageview responds with 201 when valid", %{conn: conn} do
+    conn = post(conn, "/api/pageview")
     assert json_response(conn, 201) =~ "ok"
   end
 end

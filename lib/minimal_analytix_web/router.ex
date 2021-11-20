@@ -18,11 +18,10 @@ defmodule MinimalAnalytixWeb.Router do
     pipe_through :browser
 
     get "/", PageviewController, :index
-    post "/pageview", PageviewController, :create
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", MinimalAnalytixWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", MinimalAnalytixWeb do
+    pipe_through :api
+    post "/pageview", PageviewController, :create
+  end
 end
